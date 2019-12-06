@@ -1,15 +1,23 @@
+-- import objectCollision.lua
 require 'objectCollision'
 
+-- load the following on startup of game
 function love.load()
 
+    -- states are: Main Menu, Game and Finish
     state = 'Main Menu'
 
+    -- duration of game time in seconds
+    -- sets countdown timer
     duration = 30
 
+    -- has not won or lost the game yet
     lose = false
     win = false
 
-    love.graphics.setBackgroundColor(0.3, 0.3, 0.3)
+    -- set background colour to grey
+    love.graphics.setBackgroundColor(0.5, 0.5, 0.5)
+
 
     timerFont = love.graphics.newFont(32)
     mainFont = love.graphics.newFont(64)
@@ -22,6 +30,22 @@ function love.load()
     leftPedestrians = {}
     rightPedestrians = {}
     pedestrianProbability = 0.1
+
+    pedestrianCharacters = {}
+    table.insert(pedestrianCharacters, love.graphics.newImage('Assets/Student1.png'))
+    table.insert(pedestrianCharacters, love.graphics.newImage('Assets/Student2.png'))
+    table.insert(pedestrianCharacters, love.graphics.newImage('Assets/Lecturer1.png'))
+    table.insert(pedestrianCharacters, love.graphics.newImage('Assets/Lecturer2.png'))
+    table.insert(pedestrianCharacters, love.graphics.newImage('Assets/Tourist1.png'))
+
+    bicycleImage = love.graphics.newImage('Assets/Bicycle.png')
+    KingsCollege = love.graphics.newImage('Assets/King\'s College.jpg')
+    CorpusClock = love.graphics.newImage('Assets/Corpus Clock.jpeg')
+    KingsParadeText = love.graphics.newImage('Assets/King\'s Parade Text.png')
+
+    soundEffects = {}
+    soundEffects.crash = love.audio.newSource('Assets/Crash Large-SoundBible.com-2049318973.wav', 'static')
+    soundEffects.bikeBell= love.audio.newSource('Assets/20191206-1715_Recording_3.wav', 'static')
 
 end
 
@@ -78,22 +102,35 @@ function love.draw()
 
     if state == 'Game' then
 
-        love.graphics.rectangle('fill', playerx, playery, 20, 20)
+        soundEffects.bikeBell:setLooping(true)
+        soundEffects.bikeBell:play()
+
+        love.graphics.setColor(0.6, 0.6, 0.6)
+        love.graphics.rectangle('fill', 0, 0, 200, 1000)
+        love.graphics.rectangle('fill', 700, 0, 200, 1000)
+        love.graphics.setColor(1, 1, 1)
+        love.graphics.draw(KingsCollege, 0, 200)
+        love.graphics.draw(CorpusClock, 700, 450)
+        love.graphics.draw(KingsParadeText, 300, 100)
+
+        love.graphics.draw(bicycleImage, playerx, playery)
 
         for i = #leftPedestrians, 1, -1 do
             local pedestrian = leftPedestrians[i]
-            love.graphics.rectangle('fill', pedestrian.x, pedestrian.y, 10, 10)
+            love.graphics.draw(pedestrianCharacters[(i % #pedestrianCharacters) + 1], pedestrian.x, pedestrian.y)
         end
 
         for i = #rightPedestrians, 1, -1 do
             local pedestrian = rightPedestrians[i]
-            love.graphics.rectangle('fill', pedestrian.x, pedestrian.y, 10, 10)
+            love.graphics.draw(pedestrianCharacters[(i % #pedestrianCharacters) + 1], pedestrian.x, pedestrian.y)
         end
 
         for i = #leftPedestrians, 1, -1 do
             local pedestrian = leftPedestrians[i]
             if collide(playerx, playery, pedestrian.x, pedestrian.y) then
                 lose = true
+                soundEffects.crash:stop()
+                soundEffects.crash:play()
                 state = 'Finish'
             end
         end
@@ -102,6 +139,8 @@ function love.draw()
             local pedestrian = rightPedestrians[i]
             if collide(playerx, playery, pedestrian.x, pedestrian.y) then
                 lose = true
+                soundEffects.crash:stop()
+                soundEffects.crash:play()
                 state = 'Finish'
             end
         end
@@ -124,6 +163,7 @@ function love.draw()
         love.graphics.print('Press the up key to start')
 
     else
+        soundEffects.bikeBell:stop()
         love.graphics.setFont(mainFont)
         if win == true and lose == false then
             love.graphics.print('You won!')
