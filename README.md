@@ -14,6 +14,8 @@ This game is set on King's Parade which is a street in Cambridge that is notorio
 
 A video demonstration is available as *Video Demonstration.mkv* in the repository.
 
+[![Video Demonstration](Screenshot.png)](https://youtu.be/V984U5dHS5s)
+
 ___
 
 Credits for the image of King's College by LegesRomanoru, licensed under the GNU Free Documentation License, Version 1.2 and Creative Commons Attribution-ShareAlike 3.0 License. Source: https://en.wikipedia.org/wiki/File:King%27s_College_Cambridge_from_the_Backs.jpg
