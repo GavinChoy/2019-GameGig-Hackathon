@@ -12,6 +12,8 @@ This is a game where the player is the bicycle starting at the bottom of the win
 
 This game is set on King's Parade which is a street in Cambridge that is notorious for pedestrians crossing the street. It is intended to be impossible to win the game because there are too many pedestrians crossing the road!
 
+![Video Demonstration](Video Demonstration.mkv)
+
 ___
 
 Credits for the image of King's College by LegesRomanoru, licensed under the GNU Free Documentation License, Version 1.2 and Creative Commons Attribution-ShareAlike 3.0 License. Source: https://en.wikipedia.org/wiki/File:King%27s_College_Cambridge_from_the_Backs.jpg
