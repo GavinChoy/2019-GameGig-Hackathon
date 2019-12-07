@@ -16,6 +16,12 @@ A video demonstration is available by clicking the image below:
 
 [![Video Demonstration](Screenshot.png)](https://youtu.be/V984U5dHS5s)
 
+Gavin Choy and Hui Taou Kok:
+
+![Gavin Choy and Hui Taou Kok](/Cover.JPG)
+
+![Gavin Choy and Hui Taou Kok](/Second.JPG)
+
 ___
 
 Credits for the image of King's College by LegesRomanoru, licensed under the GNU Free Documentation License, Version 1.2 and Creative Commons Attribution-ShareAlike 3.0 License. Source: https://en.wikipedia.org/wiki/File:King%27s_College_Cambridge_from_the_Backs.jpg
