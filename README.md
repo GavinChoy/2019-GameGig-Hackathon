@@ -12,7 +12,11 @@ This is a game where the player is the bicycle starting at the bottom of the win
 
 This game is set on King's Parade which is a street in Cambridge that is notorious for pedestrians crossing the street. It is intended to be impossible to win the game because there are too many pedestrians crossing the road!
 
-![Video Demonstration](Video Demonstration.mkv)
+<figure class="video_container">
+  <video controls="true" allowfullscreen="true">
+    <source src="Video Demonstation.mkv" type="video/mkv">
+  </video>
+</figure>
 
 ___
 
